@@ -42,12 +42,13 @@ const styles = StyleSheet.create({
         paddingTop: 20
     },
     subtitle: {
-        paddingTop: 5,
+        padding: 5,
         fontFamily: 'Ubuntu-Regular'
     },
     globologo: {
         height: 100,
-        width: 100,
+        width: 400,
+        resizeMode: 'contain'
     },
     heroimage: {
         width: '100%',
