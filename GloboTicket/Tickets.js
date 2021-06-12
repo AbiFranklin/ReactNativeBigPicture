@@ -1,8 +1,15 @@
 import React from 'react';
-import {StyleSheet, Text, View, FlatList, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import globoTickets from './ticketsdb';
 
-const Tickets = () => {
+const Tickets = ({navigation}) => {
   const ticketItem = ({item}) => {
     return (
       <View style={styles.tickets}>
@@ -21,7 +28,13 @@ const Tickets = () => {
             {item.description}
           </Text>
           <Text style={styles.ticketshortdescription}>Price: {item.price}</Text>
-          <Text style={styles.ticketbutton}>GET TICKETS</Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Purchase', {ticketID: item.eventId});
+            }}
+            style={styles.button}>
+            <Text style={styles.ticketbutton}>GET TICKETS</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -38,46 +51,45 @@ const Tickets = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 15,
-        paddingBottom: 15
-    },
-    tickets: {
-        flexDirection: 'column'
-    },
-    img: {
-        height: 180,
-        width: '100%'
-    },
-    tickettitle: {
-        fontFamily: 'Ubuntu-Regular',
-        fontWeight: 'bold',
-        textAlign: 'center'
-    },
-    ticketshortdescription: {
-        fontFamily: 'Ubuntu-Light',
-        fontWeight: '600',
-        textAlign: 'center',
-        paddingTop: 5
-    },
-    ticketdescription: {
-        fontFamily: 'Ubuntu-Light',
-        fontWeight: '600',
-        padding: 15
-    },
-    ticketbutton: {
-        fontFamily: 'Ubuntu-Regular',
-        fontWeight: 'bold',
-        textAlign: 'center',
-        paddingTop: 5,
-        paddingBottom: 5,
-        backgroundColor: 'teal',
-        width: '25%',
-        margin: 15,
-        marginLeft: '38%',
-        color: 'white'
-    }
-})
-
+  container: {
+    paddingTop: 15,
+    paddingBottom: 15,
+  },
+  tickets: {
+    flexDirection: 'column',
+  },
+  img: {
+    height: 180,
+    width: '100%',
+  },
+  tickettitle: {
+    fontFamily: 'Ubuntu-Regular',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  ticketshortdescription: {
+    fontFamily: 'Ubuntu-Light',
+    fontWeight: '600',
+    textAlign: 'center',
+    paddingTop: 5,
+  },
+  ticketdescription: {
+    fontFamily: 'Ubuntu-Light',
+    fontWeight: '600',
+    padding: 15,
+  },
+  ticketbutton: {
+    fontFamily: 'Ubuntu-Regular',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingTop: 5,
+    paddingBottom: 5,
+    backgroundColor: 'teal',
+    width: '25%',
+    margin: 15,
+    marginLeft: '38%',
+    color: 'white',
+  },
+});
 
 export default Tickets;

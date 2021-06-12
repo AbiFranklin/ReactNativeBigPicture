@@ -5,6 +5,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './home';
 import Tickets from './Tickets';
+import Contact from './Contact';
+import TicketPurchase from './TicketPurchase';
 
 const Stack = createStackNavigator();
 
@@ -22,7 +24,25 @@ const App: () => React$Node = () => {
             component={Tickets}
             options={{
               headerTitleAlign: 'center',
-              headerTitleStyle: {fontFamily: 'Ubuntu-REgular'},
+              headerTitleStyle: {fontFamily: 'Ubuntu-Regular'},
+            }}
+          />
+          <Stack.Screen
+            name="Contact"
+            component={Contact}
+            options={{
+              headerTitleAlign: 'center',
+              headerTitleStyle: {fontFamily: 'Ubuntu-Regular'},
+              headerTitle: 'Contacct Us'
+            }}
+          />
+          <Stack.Screen
+            name="Purchase"
+            component={TicketPurchase}
+            options={{
+              headerTitleAlign: 'center',
+              headerTitleStyle: {fontFamily: 'Ubuntu-Regular'},
+              headerTitle: 'Purchse Tickets'
             }}
           />
         </Stack.Navigator>
